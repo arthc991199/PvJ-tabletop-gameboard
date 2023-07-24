@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="status-board">
+  <div class="status-board" id="statusBoard">
     <div class="server" id="server1">
       <div class="server-name" onclick="enterServerName('server1')">Domain Controller</div>
       <button class="server-status-btn" onclick="toggleServerStatus('server1')">UP</button>
@@ -40,8 +40,8 @@
       <button class="assigned-btn" onclick="toggleAssignedStatus('server5')">Unassigned</button>
     </div>
   </div>
-
   <div class="score">Score: <span id="score">0</span></div>
+  <div class="rounds">Rounds played: <span id="rounds">0</span></div> <!-- New "Rounds" counter -->
   <button class="next-round-btn" onclick="nextRound()">Next Round</button>
 
   <script src="app.js"></script>

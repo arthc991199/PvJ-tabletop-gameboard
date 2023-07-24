@@ -5,6 +5,7 @@ body {
 
 .status-board {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin: 20px auto;
 }
@@ -15,8 +16,16 @@ body {
   align-items: center;
   justify-content: center;
   border: 3px solid black;
+  border-radius: 7px;
   padding: 20px;
   background-color: lightgreen;
+  margin: 10px; /* Added margin to create space between server boxes */
+  width: 200px; /* Set a fixed width for each server box */
+}
+
+.server-number {
+  font-weight: bold;
+  font-size: 16pt;
 }
 
 .server-name {
@@ -49,6 +58,11 @@ body {
   font-weight: bold;
   margin: 20px auto;
   font-size: 18pt;
+}
+
+.rounds {
+  margin: 10px auto;
+  font-size: 14pt;
 }
 
 .next-round-btn {

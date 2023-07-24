@@ -1,5 +1,12 @@
-let roundNumber = 1;
+let roundNumber = 0;
 let score = 0;
+
+// Get the "servers" URL parameter and create additional server boxes if needed
+const urlParams = new URLSearchParams(window.location.search);
+const serverCount = validateServerCount(urlParams.get('servers'));
+createServerBoxes(serverCount);
+// Update the server numbers
+updateServerNumbers();
 
 function enterServerName(serverId) {
   const serverName = prompt('Enter server name:');
@@ -15,6 +22,31 @@ function initializeServerStatus(serverId) {
 //  fixTimeDisplay.textContent = '-';
 }
 
+function validateServerCount(serverCount) {
+  const parsedCount = parseInt(serverCount);
+  if (isNaN(parsedCount) || parsedCount < 5 || parsedCount > 15) {
+    return 5; // Default to 5 if invalid count or not provided
+  }
+  return parsedCount;
+}
+
+function createServerBoxes(serverCount) {
+  const statusBoard = document.getElementById('statusBoard');
+  for (let i = 6; i <= serverCount; i++) {
+    const serverDiv = document.createElement('div');
+    serverDiv.className = 'server';
+    serverDiv.id = `server${i}`;
+
+    serverDiv.innerHTML = `
+      <div class="server-name" onclick="enterServerName('server${i}')">Server ${i}</div>
+      <button class="server-status-btn" onclick="toggleServerStatus('server${i}')">UP</button>
+      <div class="fix-time">Fix Time: <span id="fixTime${i}">-</span></div>
+      <button class="assigned-btn" onclick="toggleAssignedStatus('server${i}')">Unassigned</button>
+    `;
+
+    statusBoard.appendChild(serverDiv);
+  }
+}
 
 function toggleServerStatus(serverId) {
   const serverStatusBtn = document.getElementById(serverId).querySelector('.server-status-btn');
@@ -109,5 +141,19 @@ function nextRound() {
   score += 5 * upServerCount;
   document.getElementById('score').textContent = score;
   roundNumber++;
+  // Update the "Rounds" counter
+  document.getElementById('rounds').textContent = roundNumber;
+}
+
+function updateServerNumbers() {
+  const serverBoxes = document.querySelectorAll('.server');
+  serverBoxes.forEach((server, index) => {
+    const serverNumberElement = document.createElement('div');
+    serverNumberElement.className = 'server-number';
+    serverNumberElement.textContent = `(#${index + 1})`;
+
+    const serverNameElement = server.querySelector('.server-name');
+    server.insertBefore(serverNumberElement, serverNameElement);
+  });
 }
 
