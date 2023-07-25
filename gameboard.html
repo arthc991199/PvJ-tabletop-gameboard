@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <H1>Tabletop Network Defense Exercise Status Board</h1>
   <div class="status-board" id="statusBoard">
     <div class="server" id="server1">
       <div class="server-name" onclick="enterServerName('server1')">Domain Controller</div>
@@ -43,16 +44,16 @@
   <div class="score">Score: <span id="score">0</span></div>
   <div class="rounds">Rounds played: <span id="rounds">0</span></div> <!-- New "Rounds" counter -->
   <button class="next-round-btn" onclick="nextRound()">Next Round</button>
+  <hr>
+  <button class="rollback-btn" onclick="performRollback()">Rollback/Reset</button>
+  <div class="rollback"><strong>Rollback/Reset count: <span id="rollbackCounter">0</span></strong></div>
+  <div class="rollback-warning"><em>Warning: Rollbacks and resets cost 150 points, and you cannot purchase a rollback or reset without the points for purchase.</em></div>
+  <hr>
+  <div class="scriptsLeft"><strong>Scripts left: <span id="scriptsCount">3</span></strong></div>
+  <button class="useScripts-btn" onclick="useFixerScript()">Use Prepared Script</button>
+
 
   <script src="app.js"></script>
-  <script>
-	  initializeServerStatus('server1');
-	  initializeServerStatus('server2');
- 	  initializeServerStatus('server3');
- 	  initializeServerStatus('server4');
- 	  initializeServerStatus('server5');
-  </script>
-
 
 </body>
 </html>

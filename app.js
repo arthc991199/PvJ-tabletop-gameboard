@@ -1,5 +1,7 @@
 let roundNumber = 0;
 let score = 0;
+let rollbackCounter = 0; // Initialize the Rollback/Reset counter
+let suggestedServerNames = ["Domain Controller","pfSense FW/router","bind server","Web server","PBX server", "File Server", "Oracle proxy server", "VPN pool server", "Dev Lab ESXi server", "Accounting Apps Server", "NAS Server","Orders API Server","Audit Logging Server","Proj.System server","Security video/badges server"];
 
 // Get the "servers" URL parameter and create additional server boxes if needed
 const urlParams = new URLSearchParams(window.location.search);
@@ -7,6 +9,29 @@ const serverCount = validateServerCount(urlParams.get('servers'));
 createServerBoxes(serverCount);
 // Update the server numbers
 updateServerNumbers();
+
+let scriptsCounter = validateScriptsCount(urlParams.get('scripts'));
+updateScriptsCount(scriptsCounter);
+
+function performRollback() {
+  if (score >= 150) {
+    score -= 150;
+    rollbackCounter++;
+    document.getElementById('score').textContent = score;
+    document.getElementById('rollbackCounter').textContent = rollbackCounter;
+  }
+}
+
+function useFixerScript() {
+  if (scriptsCounter > 0) {
+    scriptsCounter--;
+    document.getElementById('scriptsCount').textContent = scriptsCounter;
+  }
+}
+
+function updateScriptsCount(scriptCount) {
+  document.getElementById('scriptsCount').textContent = scriptCount;
+}
 
 function enterServerName(serverId) {
   const serverName = prompt('Enter server name:');
@@ -20,6 +45,14 @@ function initializeServerStatus(serverId) {
   serverStatusBtn.textContent = 'UP';
   serverStatusBtn.style.backgroundColor = 'green';
 //  fixTimeDisplay.textContent = '-';
+}
+
+function validateScriptsCount(scriptCount) {
+  const parsedCount = parseInt(scriptCount);
+  if (isNaN(parsedCount) || parsedCount < 0 || parsedCount > 10) {
+    return 3; // Default to 3 if invalid count or not provided
+  }
+  return parsedCount;
 }
 
 function validateServerCount(serverCount) {
@@ -38,7 +71,7 @@ function createServerBoxes(serverCount) {
     serverDiv.id = `server${i}`;
 
     serverDiv.innerHTML = `
-      <div class="server-name" onclick="enterServerName('server${i}')">Server ${i}</div>
+      <div class="server-name" onclick="enterServerName('server${i}')">${suggestedServerNames[i]}</div>
       <button class="server-status-btn" onclick="toggleServerStatus('server${i}')">UP</button>
       <div class="fix-time">Fix Time: <span id="fixTime${i}">-</span></div>
       <button class="assigned-btn" onclick="toggleAssignedStatus('server${i}')">Unassigned</button>
