@@ -84,8 +84,8 @@ function createServerBoxes(serverCount) {
 function toggleServerStatus(serverId) {
   const serverStatusBtn = document.getElementById(serverId).querySelector('.server-status-btn');
   const serverBox = document.getElementById(serverId);
-  const fixTimeDisplay = document.getElementById(`fixTime${serverId.slice(-1)}`);
-  
+  const fixTimeDisplay = document.getElementById(`fixTime${serverId.substr(6)}`);
+ 
   if (serverStatusBtn.textContent === 'UP') {
     serverStatusBtn.textContent = 'DOWN';
     serverStatusBtn.style.backgroundColor = 'red';
