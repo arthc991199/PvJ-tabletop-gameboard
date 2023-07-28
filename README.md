@@ -52,7 +52,7 @@ This exercises only has five servers, in the real game this will be more like te
 See the "Red Team Action Cards Table" below and lookup the result. If the Red Team attacks a server, click the "UP" status button on the attacked server to change the status to "DOWN". You will see a Fix Time number appear; that is the number of rounds the server will take to fix. The fix time will automatically decrease with each click of the Next Round button **only if** there is someone assigned to that server fix task. Let the group determine who will work on it and when (hopefully now, but if everyone is already busy, remember that player cannot work on two servers at the same time!)
 **Click the "Unassigned" button once someone has been assigned to fix this server.** This will change the status to "Assigned". 
 Also note that players can pair-up and collaborate on a server fix, which solves the problem in half the time. Shift-click on the "Assigned" status button to change it to "Collab" and this will reduce the Fix Time by two rounds each round instead of one per round.
-2. Continue to assign players to the DOWN servers until all assignments that can be made have been made.
+2. Continue to assign players to the DOWN servers until all assignments that can be made have been made. DO NOT assign more machines than you have players! The maximum number of machines any one player can work on in a single round is ONE. No player can work on two or more machines in the same round.
 3. **Click the "Next Round" button and go back to step 1 of the round play.**
 Repeat until the pre-determined rounds have been played.
 
