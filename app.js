@@ -1,7 +1,7 @@
 let roundNumber = 0;
 let score = 0;
 let rollbackCounter = 0; // Initialize the Rollback/Reset counter
-let suggestedServerNames = ["Domain Controller","pfSense FW/router","bind server","Web server","PBX server", "File Server", "Oracle proxy server", "VPN pool server", "Dev Lab ESXi server", "Accounting Apps Server", "NAS Server","Orders API Server","Audit Logging Server","Proj.System server","Security video/badges server"];
+let suggestedServerNames = ["zerobox","win2012r2","redis","orangehrm","ns","mail","mysql", "mediawiki", "drupal", "win10-1", "win7-1", "samba","freepbx","linux-1","linux-2","win10-2"];
 
 // Get the "servers" URL parameter and create additional server boxes if needed
 const urlParams = new URLSearchParams(window.location.search);
